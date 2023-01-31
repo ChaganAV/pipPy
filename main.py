@@ -13,6 +13,9 @@ app.add_handler(CommandHandler("hi", bc.hi_command))
 app.add_handler(CommandHandler("time", bc.time_command))
 app.add_handler(CommandHandler("help", bc.help_command))
 app.add_handler(CommandHandler("sum", bc.sum_command))
+app.add_handler(CommandHandler("play", bc.play_command))
+app.add_handler(CommandHandler("p", bc.play_continue_command))
+
 print("server-start")
 app.run_polling()
 
