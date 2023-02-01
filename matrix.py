@@ -1,37 +1,7 @@
+from random import randint
 def showMatrix():
-    print(m[0],m[1],m[2])
-    print(m[3],m[4],m[5])
-    print(m[6],m[7],m[8])
-def outMatrix():
     return f"{m[0]}{m[1]}{m[2]}\n{m[3]}{m[4]}{m[5]}\n{m[6]}{m[7]}{m[8]}"
 
-def checkWin2():
-    res = 0
-    if m[0] == m[1] == m[2] == '0' or m[0] == m[1] == m[2] == 'X':
-        print(f'Победили {m[0]}')
-        res = 1
-    if m[3] == m[4] == m[5] == '0' or m[3] == m[4] == m[5] == 'X':
-        print(f'Победили {m[3]}')
-        res = 1
-    if m[6] == m[7] == m[8] == '0' or m[0] == m[1] == m[2] == 'X':
-        print(f'Победили {m[6]}')
-        res = 1
-    if m[0] == m[3] == m[4] == '0' or m[0] == m[3] == m[4] == 'X':
-        print(f'Победили {m[0]}')
-        res = 1
-    if m[1] == m[4] == m[7] == '0' or m[1] == m[4] == m[7] == 'X':
-        print(f'Победили {m[1]}')
-        res = 1
-    if m[2] == m[5] == m[8] == '0' or m[2] == m[5] == m[8] == 'X':
-        print(f'Победили {m[2]}')
-        res = 1
-    if m[0] == m[4] == m[8] == '0' or m[0] == m[4] == m[8] == 'X':
-        print(f'Победили {m[0]}')
-        res = 1
-    if m[2] == m[4] == m[6] == '0' or m[2] == m[4] == m[6] == 'X':
-        print(f'Победили {m[2]}')
-        res = 1
-    return res
 def check(x,y,z):
     return x==y==z
 
@@ -48,25 +18,18 @@ def checkRow():
 
 m = ['*', '*', '*', '*', '*', '*', '*', '*', '*']
 
-# showm()
-
-def play1(num):
-    while True:
-        # number = int(input("Введите номер ячейки, чтобы поставить крестик: "))
-        number = int(num)
-        m[number-1] = 'X'
-
-        # showm()
-        resOut = outMatrix()
-        res = checkWin2()
-        if res == 1:
-            break
 def play(num):
-    # number = int(input("Введите номер ячейки, чтобы поставить крестик: "))
     number = int(num)
-    m[number-1] = 'X'
-
-    # showm()
-    res = outMatrix()
-    # res = checkWin()
+    res = False
+    if m[number-1] != '*':
+        res = False
+    else:
+        m[number-1] = 'X'
+        res = True
     return res
+def insertRandom():
+    while True:
+        num = randint(0,8)
+        if m[num] == '*':
+            m[num] = '0'
+            break

@@ -1,3 +1,4 @@
+from random import randint
 m = ['*', 'X', 'X', 'X', 'X', 'X', '*', '*', '*']
 def check(x,y,z):
     return x==y==z
@@ -12,4 +13,4 @@ def checkRow():
     if check(m[2],m[4],m[6]): return m[2]
     return '*'
 
-print(checkRow())
+print(randint(0,8))
