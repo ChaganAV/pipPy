@@ -26,6 +26,7 @@ async def sum_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def play_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Начнем")
+    matrix.m = ['*', '*', '*', '*', '*', '*', '*', '*', '*']
     await update.message.reply_text(matrix.showMatrix())
     await update.message.reply_text("Введите: /p [номер]")
 
@@ -41,7 +42,6 @@ async def play_continue_command(update: Update, context: ContextTypes.DEFAULT_TY
     res = matrix.checkRow()
     if res != "*":
         await update.message.reply_text(f"Победили {res}")
-        m = ['*', '*', '*', '*', '*', '*', '*', '*', '*']
     else:
         await update.message.reply_text("Мой ход")
         matrix.insertRandom()
