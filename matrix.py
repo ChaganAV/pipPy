@@ -1,76 +1,62 @@
 def showMatrix():
-    print(matrix[0],matrix[1],matrix[2])
-    print(matrix[3],matrix[4],matrix[5])
-    print(matrix[6],matrix[7],matrix[8])
+    print(m[0],m[1],m[2])
+    print(m[3],m[4],m[5])
+    print(m[6],m[7],m[8])
 def outMatrix():
-    return f"{matrix[0]}{matrix[1]}{matrix[2]}\n{matrix[3]}{matrix[4]}{matrix[5]}\n{matrix[6]}{matrix[7]}{matrix[8]}"
+    return f"{m[0]}{m[1]}{m[2]}\n{m[3]}{m[4]}{m[5]}\n{m[6]}{m[7]}{m[8]}"
 
 def checkWin2():
     res = 0
-    if matrix[0] == matrix[1] == matrix[2] == '0' or matrix[0] == matrix[1] == matrix[2] == 'X':
-        print(f'Победили {matrix[0]}')
+    if m[0] == m[1] == m[2] == '0' or m[0] == m[1] == m[2] == 'X':
+        print(f'Победили {m[0]}')
         res = 1
-    if matrix[3] == matrix[4] == matrix[5] == '0' or matrix[3] == matrix[4] == matrix[5] == 'X':
-        print(f'Победили {matrix[3]}')
+    if m[3] == m[4] == m[5] == '0' or m[3] == m[4] == m[5] == 'X':
+        print(f'Победили {m[3]}')
         res = 1
-    if matrix[6] == matrix[7] == matrix[8] == '0' or matrix[0] == matrix[1] == matrix[2] == 'X':
-        print(f'Победили {matrix[6]}')
+    if m[6] == m[7] == m[8] == '0' or m[0] == m[1] == m[2] == 'X':
+        print(f'Победили {m[6]}')
         res = 1
-    if matrix[0] == matrix[3] == matrix[4] == '0' or matrix[0] == matrix[3] == matrix[4] == 'X':
-        print(f'Победили {matrix[0]}')
+    if m[0] == m[3] == m[4] == '0' or m[0] == m[3] == m[4] == 'X':
+        print(f'Победили {m[0]}')
         res = 1
-    if matrix[1] == matrix[4] == matrix[7] == '0' or matrix[1] == matrix[4] == matrix[7] == 'X':
-        print(f'Победили {matrix[1]}')
+    if m[1] == m[4] == m[7] == '0' or m[1] == m[4] == m[7] == 'X':
+        print(f'Победили {m[1]}')
         res = 1
-    if matrix[2] == matrix[5] == matrix[8] == '0' or matrix[2] == matrix[5] == matrix[8] == 'X':
-        print(f'Победили {matrix[2]}')
+    if m[2] == m[5] == m[8] == '0' or m[2] == m[5] == m[8] == 'X':
+        print(f'Победили {m[2]}')
         res = 1
-    if matrix[0] == matrix[4] == matrix[8] == '0' or matrix[0] == matrix[4] == matrix[8] == 'X':
-        print(f'Победили {matrix[0]}')
+    if m[0] == m[4] == m[8] == '0' or m[0] == m[4] == m[8] == 'X':
+        print(f'Победили {m[0]}')
         res = 1
-    if matrix[2] == matrix[4] == matrix[6] == '0' or matrix[2] == matrix[4] == matrix[6] == 'X':
-        print(f'Победили {matrix[2]}')
+    if m[2] == m[4] == m[6] == '0' or m[2] == m[4] == m[6] == 'X':
+        print(f'Победили {m[2]}')
         res = 1
     return res
-def checkWin():
-    res = '*'
-    if matrix[0] == matrix[1] == matrix[2] == '0' or matrix[0] == matrix[1] == matrix[2] == 'X':
-        # print(f'Победили {matrix[0]}')
-        res = matrix[0]
-    if matrix[3] == matrix[4] == matrix[5] == '0' or matrix[3] == matrix[4] == matrix[5] == 'X':
-        # print(f'Победили {matrix[3]}')
-        res = matrix[3]
-    if matrix[6] == matrix[7] == matrix[8] == '0' or matrix[0] == matrix[1] == matrix[2] == 'X':
-        # print(f'Победили {matrix[6]}')
-        res = matrix[6]
-    if matrix[0] == matrix[3] == matrix[4] == '0' or matrix[0] == matrix[3] == matrix[4] == 'X':
-        # print(f'Победили {matrix[0]}')
-        res = matrix[0]
-    if matrix[1] == matrix[4] == matrix[7] == '0' or matrix[1] == matrix[4] == matrix[7] == 'X':
-        # print(f'Победили {matrix[1]}')
-        res = matrix[1]
-    if matrix[2] == matrix[5] == matrix[8] == '0' or matrix[2] == matrix[5] == matrix[8] == 'X':
-        # print(f'Победили {matrix[2]}')
-        res = matrix[2]
-    if matrix[0] == matrix[4] == matrix[8] == '0' or matrix[0] == matrix[4] == matrix[8] == 'X':
-        # print(f'Победили {matrix[0]}')
-        res = matrix[0]
-    if matrix[2] == matrix[4] == matrix[6] == '0' or matrix[2] == matrix[4] == matrix[6] == 'X':
-        # print(f'Победили {matrix[2]}')
-        res = matrix[2]
-    return res
+def check(x,y,z):
+    return x==y==z
 
-matrix = ['*', '*', '*', '*', '*', '*', '*', '*', '*']
+def checkRow():
+    if check(m[0],m[1],m[2]): return m[0]
+    if check(m[3],m[4],m[5]): return m[3]
+    if check(m[6],m[7],m[8]): return m[6]
+    if check(m[0],m[3],m[6]): return m[0]
+    if check(m[1],m[4],m[7]): return m[1]
+    if check(m[2],m[5],m[8]): return m[2]
+    if check(m[0],m[4],m[8]): return m[0]
+    if check(m[2],m[4],m[6]): return m[2]
+    return '*'
 
-# showMatrix()
+m = ['*', '*', '*', '*', '*', '*', '*', '*', '*']
+
+# showm()
 
 def play1(num):
     while True:
         # number = int(input("Введите номер ячейки, чтобы поставить крестик: "))
         number = int(num)
-        matrix[number-1] = 'X'
+        m[number-1] = 'X'
 
-        # showMatrix()
+        # showm()
         resOut = outMatrix()
         res = checkWin2()
         if res == 1:
@@ -78,9 +64,9 @@ def play1(num):
 def play(num):
     # number = int(input("Введите номер ячейки, чтобы поставить крестик: "))
     number = int(num)
-    matrix[number-1] = 'X'
+    m[number-1] = 'X'
 
-    # showMatrix()
+    # showm()
     res = outMatrix()
     # res = checkWin()
     return res

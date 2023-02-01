@@ -8,7 +8,7 @@ async def hi_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(f'Hi {update.effective_user.full_name}')
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(f'/hi\n/time\n/sum\n/play\n/p\n/help')
+    await update.message.reply_text(f'/hi Приветствие\n/time Время\n/sum Расчет сумм\n/play Игра\n/p Продолжение игры\n/h Список команд')
 
 async def time_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(f'{datetime.datetime.now().time()}')
@@ -27,31 +27,18 @@ async def sum_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def play_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Начнем")
     await update.message.reply_text(matrix.outMatrix())
-    msg = update.message.text
-    text = "-"
-    for item in msg.split():
-        if item!="/play":
-            text = item
-    # matrix.play(text)
-    await update.message.reply_text(matrix.play(text))
-    res = matrix.checkWin()
-    if res != "*":
-        await update.message.reply_text(f"Победили {res}")
-    else:
-        await update.message.reply_text("Для продолжения введите: /p [номер]")
+    await update.message.reply_text("Введите: /p [номер]")
 
 async def play_continue_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Начнем")
-    await update.message.reply_text(matrix.outMatrix())
     msg = update.message.text
-    text = "-"
+    text = "*"
     for item in msg.split():
         if item!="/p":
             text = item
     # matrix.play(text)
     await update.message.reply_text(matrix.play(text))
-    res = matrix.checkWin()
+    res = matrix.checkRow()
     if res != "*":
         await update.message.reply_text(f"Победили {res}")
     else:
-        await update.message.reply_text("Для продолжения введите: /p [номер]")
+        await update.message.reply_text("Продолжим: /p [номер]")
